@@ -46,7 +46,6 @@ class WalletTable extends React.Component {
 const mapStateToProps = ({ wallet }) => wallet;
 
 WalletTable.propTypes = {
-
   expenses: propTypes.arrayOf(propTypes.shape({
     id: propTypes.number.isRequired,
     description: propTypes.string.isRequired,

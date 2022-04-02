@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as EmailValidator from 'email-validator';
+import EmailValidator from 'email-validator';
 import propTypes from 'prop-types';
 import { userAction } from '../actions/index';
 

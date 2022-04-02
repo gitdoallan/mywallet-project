@@ -4,16 +4,13 @@ import propTypes from 'prop-types';
 import { walletActionCurrencies } from '../actions/index';
 import Header from '../components/Header';
 import WalletForm from '../components/WalletForm';
+import WalletTable from '../components/WalletTable';
+import { fetchApiFiltered } from '../helpers/api';
 
 class Wallet extends React.Component {
   async componentDidMount() {
     const { dispatch } = this.props;
-    const result = await fetch('https://economia.awesomeapi.com.br/json/all')
-      .then((response) => response.json())
-      .then((data) => data)
-      .catch((error) => error);
-    const resultsKey = Object.keys(result);
-    const filteredResults = resultsKey.filter((element) => element !== 'USDT');
+    const filteredResults = await fetchApiFiltered();
     dispatch(walletActionCurrencies(filteredResults));
   }
 
@@ -23,6 +20,7 @@ class Wallet extends React.Component {
         <Header />
         <span>TrybeWallet</span>
         <WalletForm />
+        <WalletTable />
       </div>
     );
   }

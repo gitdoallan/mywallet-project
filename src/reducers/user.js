@@ -4,11 +4,12 @@ const INITIAL_STATE = {
 
 export const USER_LOGIN = 'USER_LOGIN';
 
-const user = (state = INITIAL_STATE, {type, payload}) => {
+const user = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
-    case USER_LOGIN: return { ...state, email: payload };
-    default: return state;
+  case USER_LOGIN:
+    return { ...state, ...payload };
+  default: return state;
   }
-}
+};
 
 export default user;
