@@ -11,7 +11,7 @@ class Header extends React.Component {
           Hello,
           <span data-testid="email-field">{ email }</span>
         </div>
-        <div data-testid="total-field">{ expensesTotal.toFixed(2) }</div>
+        <div data-testid="total-field">{ expensesTotal.total.toFixed(2) }</div>
         <div data-testid="header-currency-field">{ currency }</div>
       </header>
     );
@@ -25,11 +25,13 @@ const mapStateToProps = ({
 Header.propTypes = {
   email: propTypes.string.isRequired,
   currency: propTypes.string.isRequired,
-  expensesTotal: propTypes.number,
+  expensesTotal: propTypes.shape({
+    total: propTypes.number.isRequired,
+  }),
 };
 
 Header.defaultProps = {
-  expensesTotal: 0,
+  expensesTotal: { total: 0, ask: 0 },
 };
 
 export default connect(mapStateToProps)(Header);

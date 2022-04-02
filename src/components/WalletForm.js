@@ -33,7 +33,7 @@ class WalletForm extends React.Component {
     dispatch(walletActionExpenses(expenses));
     const askPrice = expenses.exchangeRates[expenses.currency].ask;
     const expensesConverted = expenses.value * askPrice;
-    dispatch(walletActionExpensesTotal(expensesConverted));
+    dispatch(walletActionExpensesTotal({ total: expensesConverted, ask: askPrice }));
     this.setState({ ...INIT_STATE, id: id + 1 });
   }
 
